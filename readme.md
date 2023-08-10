@@ -54,6 +54,20 @@ const defineRoutes: DefineFastifyRoutes = (fastify) => {
 };
 
 export default defineRoutes;
+
+// you can optionally configure the fastify server instance, too:
+export const defineConfig = (fastifyOptions) => {
+  let i = 0;
+
+  fastifyOptions.genReqId = function (req) {
+    return i++;
+  };
+
+  // for more options, see
+  // https://fastify.dev/docs/latest/Reference/Server/#factory
+
+  return fastifyOptions;
+}
 ```
 
 #### port
